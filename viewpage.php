@@ -25,7 +25,7 @@ $row = mysqli_fetch_array($result);
             <li>
                 <div class="btn_more">...</div>
                 <ul>
-                    <li><a href="viewpage.php?action=true&id=<?php echo $_GET['id']; ?>">Edit</a></li>
+                    <!-- <li><a href="viewpage.php?action=true&id=<?php echo $_GET['id']; ?>">Edit</a></li> -->
                     <li><a href="index.php?id=<?php echo $_GET['id'] ?>">Delete</a></li>
                 </ul>
             </li>
@@ -39,25 +39,22 @@ $row = mysqli_fetch_array($result);
             echo '<tr><td><img class="viewboxpic" src="upload/images/' . $row['pic_name'] . '"></td></tr>';
             echo '<tr><td>Detail:</td></tr>';
             if (isset($_GET['action']) == "true") {
-                echo '<tr><td><input type="text" name="" id="" value="' . $row['pic_detal'] . '"></td></tr>';
-                echo '<tr><td><button type="submit" onclick="submit()">Upload</button></td></tr>';
+                echo '<tr><td><input type="text" name="" id="detail" value="' . $row['pic_detal'] . '"></td></tr>';
+                echo '<tr><td><button class="btn_upload" type="button" onclick="submit()" disable>Upload</button></td></tr>';
+                
             } else
                 echo '<tr><td>' . $row['pic_detal'] . '</td></tr>';
             ?>
         </table>
     </div>
 
-
-    <script>
-    function submit() {
-    var Title = document.getElementById('Title').value;
-    var Detail = document.getElementById('Detail').value;
-    console.log(Title);
-
-    if (Title && Detail == "") {
-    alert("some fields are empty, please write something!");
-    }
-    }
+    <?php
+    include('footer.php')
+    ?>
+    <script>    
+        function submit() {
+           location.replace('action_edit.php');
+        }
     </script>
 </body>
 

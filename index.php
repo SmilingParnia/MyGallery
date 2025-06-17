@@ -37,7 +37,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
     }
 
 
-
+    include('footer.php')
     ?>
   </div>
 </body>
